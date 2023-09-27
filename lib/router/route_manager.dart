@@ -15,7 +15,7 @@ import 'package:clinic/view/user_view/user_immunization.dart';
 import 'package:clinic/view/user_view/user_profile.dart';
 import 'package:clinic/view/user_view/user_track_immunization.dart';
 import 'package:flutter/material.dart';
-
+ 
 final routerDelegate = BeamerDelegate(
   setBrowserTabTitle : false,
   initialPath: '/',

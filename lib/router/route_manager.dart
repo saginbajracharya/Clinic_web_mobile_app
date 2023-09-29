@@ -355,8 +355,11 @@ class DoctorLocation extends BeamLocation<BeamState> {
       BeamPage(
         key: ValueKey('patients-${state.pathParameters['doctorId']}'),
         title: state.pathParameters['doctorId'],
-        child: PatientProfile(
-          name: state.pathParameters['doctorId'],
+        child: DetailsPage(
+          docList: doctorsList.firstWhere(
+            (doctor) => doctor['doctorName'] == state.pathParameters['doctorId'],
+            orElse: () => {'doctorName': 'Not Found'},
+          ),
         ),
       ),
   ];

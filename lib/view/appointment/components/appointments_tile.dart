@@ -60,7 +60,7 @@ class _AppointmentListTileState extends State<AppointmentListTile> {
           //Navigate to doctor profile page
           InkWell(
             onTap: () {
-              context.beamToNamed("/doctorList/${widget.docName}");
+              context.beamToNamed("/doctors/${widget.docName}");
             },
             child: SizedBox(
               width: 200,
@@ -84,7 +84,7 @@ class _AppointmentListTileState extends State<AppointmentListTile> {
           //Navigate to patient profile page
           InkWell(
             onTap: (){
-              context.beamToNamed("/patientList/${widget.patientName}");
+              context.beamToNamed("/patients/${widget.patientName}");
             },
             child: SizedBox(
               width: 200,
@@ -211,7 +211,7 @@ class _AppointmentListTileState extends State<AppointmentListTile> {
           //Navigate to doctor profile page
           InkWell(
             onTap: () {
-              context.beamToNamed("/doctorList/${widget.docName}");
+              context.beamToNamed("/doctors/${widget.docName}");
             },
             child: Row(
               children: [
@@ -255,7 +255,7 @@ class _AppointmentListTileState extends State<AppointmentListTile> {
               Flexible(
                 child: InkWell(
                   onTap: (){
-                    context.beamToNamed("/patientList/${widget.patientName}");
+                    context.beamToNamed("/patients/${widget.patientName}");
                   },
                   child: Text(widget.patientName,style: ralewayMedium(black.withOpacity(0.8), 16),textAlign: TextAlign.end, ),
                 ),
@@ -332,9 +332,9 @@ class _AppointmentListTileState extends State<AppointmentListTile> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      const Icon(Icons.clear, color: pink, size: 14,),
-                      const SizedBox(width: 2,),
-                      Flexible(child: Text(cancel[widget.index] == true ? "Cancelled":"Cancel", style: ralewayMedium(pink, 12),))
+                        const Icon(Icons.clear, color: pink, size: 14,),
+                        const SizedBox(width: 2,),
+                        Flexible(child: Text(cancel[widget.index] == true ? "Cancelled":"Cancel", style: ralewayMedium(pink, 12),))
                       ]
                     ),
                   ),

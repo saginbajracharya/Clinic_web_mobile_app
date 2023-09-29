@@ -1,4 +1,3 @@
-import 'package:beamer/beamer.dart';
 import 'package:clinic/common/styles.dart';
 import 'package:clinic/controller/navigation_bar_controller.dart';
 import 'package:clinic/widget/custom_appbar.dart';
@@ -20,25 +19,11 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: kIsWeb 
       ? null 
       : appbar(
         context,
-        (){
-          if(navBarCon.selectedIndex==0){
-            context.beamToNamed('/dashboard');  
-          }
-          else if(navBarCon.selectedIndex==1){
-            context.beamToNamed('/appointments');
-          }
-          else if(navBarCon.selectedIndex==2){
-            context.beamToNamed('/patientList');
-          }
-          else if(navBarCon.selectedIndex==3){
-            context.beamToNamed('/doctorList');
-          }
-          Navigator.pop(context);
-        },
         bgColor,
         0.0
       ),

@@ -160,7 +160,7 @@ class _PatientListTileState extends State<PatientListTile> {
   patientTile() {
     return InkWell(
       onTap: (){
-        Beamer.of(widget.parentContext).beamToNamed("/patientList/${widget.patientName}");
+        Beamer.of(widget.parentContext).beamToNamed("/patients/${widget.patientName}");
       },
       child: Container(
         width: double.infinity,
@@ -236,7 +236,7 @@ class _PatientListTileState extends State<PatientListTile> {
   patientMobileTile() {
     return InkWell(
       onTap: (){
-        Beamer.of(context).beamToNamed("/patientList/${widget.patientName}");
+        Beamer.of(context).beamToNamed("/patients/${widget.patientName}");
       },
       child: Container(
         width: double.infinity,

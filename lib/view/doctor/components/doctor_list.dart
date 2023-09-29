@@ -47,7 +47,7 @@ class _DoctorListTileState extends State<DoctorListTile> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Beamer.of(widget.parentContext).beamToNamed("/doctorList/${widget.doctorName}");
+        Beamer.of(widget.parentContext).beamToNamed("/doctors/${widget.doctorName}");
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 15),

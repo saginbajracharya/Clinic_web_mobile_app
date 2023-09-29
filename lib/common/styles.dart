@@ -18,6 +18,7 @@ Color? grey600           = Colors.grey[600];
 Color? grey700           = Colors.grey[700];
 Color? grey800           = Colors.grey[800];
 Color? grey900           = Colors.grey[900];
+const transparent        = Colors.transparent;
 
 ralewayRegular(color,double fontsize,double letterSpacing) => GoogleFonts.raleway(fontSize: fontsize, fontWeight: FontWeight.normal, color: color, letterSpacing: letterSpacing,);
 ralewaySemiBold(color,double fontsize) => GoogleFonts.raleway(fontSize: fontsize, fontWeight: FontWeight.w600, color: color,);

@@ -1,5 +1,6 @@
 import 'package:beamer/beamer.dart';
 import 'package:clinic/list/lists.dart';
+import 'package:clinic/view/app_screen.dart';
 import 'package:clinic/view/appointment/appointment_page.dart';
 import 'package:clinic/view/auth/change_password.dart';
 import 'package:clinic/view/auth/forgot_password.dart';
@@ -16,7 +17,7 @@ import 'package:clinic/view/user_view/user_profile.dart';
 import 'package:clinic/view/user_view/user_track_immunization.dart';
 import 'package:flutter/material.dart';
  
-final routerDelegate = BeamerDelegate(
+final routerDelegate1 = BeamerDelegate(
   setBrowserTabTitle : false,
   initialPath: '/',
   locationBuilder: RoutesLocationBuilder(
@@ -219,4 +220,144 @@ class SideBarXLocation extends BeamLocation<BeamState> {
     }
     return beamPages;
   }
+}
+
+//=============================================================================//
+
+final routerDelegate = BeamerDelegate(
+  setBrowserTabTitle : false,
+  transitionDelegate: const NoAnimationTransitionDelegate(),
+  initialPath: '/dashboard',
+  locationBuilder: RoutesLocationBuilder(
+    routes: {
+      '*': (context, state, data) => const AppScreen(),
+      '/login': (context,state,date){
+         return const BeamPage(
+          key: ValueKey('clinic-login'),
+          title: 'login',
+          child: Login(),
+        );
+      },
+      '/signup': (context,state,date){
+         return const BeamPage(
+          key: ValueKey('clinic-signUpPage'),
+          title: 'SignUpPage',
+          child: SignUpPage(),
+        );
+      },
+      '/forgotPassword': (context,state,date){
+        return const BeamPage(
+          key: ValueKey('clinic-forgotpassword'),
+          title: 'forgotpassword',
+          child: ForgotPassword(),
+        );
+      },
+      '/changePassword': (context,state,date){
+        return const BeamPage(
+          key: ValueKey('clinic-changePassword'),
+          title: 'changePassword',
+          child: ChangePassword(),
+        );
+      },
+      '/profile':(context,state,date){
+        return const BeamPage(
+          key: ValueKey('clinic-profile'),
+          title: 'profile',
+          child: UserProfile(),
+        );
+      },
+    },
+  ),
+);
+
+class DashboardLocation extends BeamLocation<BeamState> {
+  DashboardLocation(RouteInformation routeInformation) : super(routeInformation);
+
+  @override
+  List<String> get pathPatterns => ['/dashboard'];
+
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) => [
+    const BeamPage(
+      key: ValueKey('dashboard'),
+      title: 'Dashboard',
+      type: BeamPageType.noTransition,
+      child: DashboardPage(),
+    ),
+  ];
+}
+
+class AppointmentLocation extends BeamLocation<BeamState> {
+  AppointmentLocation(RouteInformation routeInformation) : super(routeInformation);
+
+  @override
+  List<String> get pathPatterns => ['/Appointments/:appointmentId'];
+
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) => [
+    const BeamPage(
+      key: ValueKey('Appointments'),
+      title: 'Appointments',
+      type: BeamPageType.noTransition,
+      child: AppointmentPage(),
+    ),
+    // if (state.pathParameters.containsKey('appointmentId'))
+    //   BeamPage(
+    //     key: ValueKey('articles-${state.pathParameters['appointmentId']}'),
+    //     title: appointmentList.firstWhere((appointment) => appointment['id'] == state.pathParameters['appointmentId'])['title'],
+    //     child: ArticleDetailsScreen(
+    //       article: appointmentList.firstWhere((appointment) => appointment['id'] == state.pathParameters['appointmentId']),
+    //     ),
+    //   ),
+  ];
+}
+
+class PatientLocation extends BeamLocation<BeamState> {
+  PatientLocation(RouteInformation routeInformation) : super(routeInformation);
+
+  @override
+  List<String> get pathPatterns => ['/patients/:patientId'];
+
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) => [
+    const BeamPage(
+      key: ValueKey('patients'),
+      title: 'patients',
+      type: BeamPageType.noTransition,
+      child: PatientViewPage(),
+    ),
+    if (state.pathParameters.containsKey('patientId'))
+      BeamPage(
+        key: ValueKey('patients-${state.pathParameters['patientId']}'),
+        title: state.pathParameters['patientId'],
+        child: PatientProfile(
+          name: state.pathParameters['patientId'],
+        ),
+      ),
+  ];
+}
+
+class DoctorLocation extends BeamLocation<BeamState> {
+  DoctorLocation(RouteInformation routeInformation) : super(routeInformation);
+
+  @override
+  List<String> get pathPatterns => ['/doctors/:doctorId'];
+
+  @override
+  List<BeamPage> buildPages(BuildContext context, BeamState state) => [
+    const BeamPage(
+      key: ValueKey('doctors'),
+      title: 'doctors',
+      type: BeamPageType.noTransition,
+      child: DoctorViewPage(),
+    ),
+    if (state.pathParameters.containsKey('doctorId'))
+      BeamPage(
+        key: ValueKey('patients-${state.pathParameters['doctorId']}'),
+        title: state.pathParameters['doctorId'],
+        child: PatientProfile(
+          name: state.pathParameters['doctorId'],
+        ),
+      ),
+  ];
 }

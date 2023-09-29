@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme                 : darkTheme,
       themeMode                 : ThemeMode.system,
       useInheritedMediaQuery    : true,
-      title                     :'Clinic'
+      title                     : 'Clinic'
     );
   }
 }
